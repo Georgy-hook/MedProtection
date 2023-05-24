@@ -11,8 +11,12 @@ class AutorizationViewController: UIViewController {
     
 
     @IBAction func autorizationButtonTapped(_ sender: Any) {
-        let nextViewController = storyboard!.instantiateViewController(withIdentifier: "PatientViewController") as! PatientViewController
-        navigationController?.pushViewController(nextViewController, animated: true)
+       // let nextViewController = storyboard!.instantiateViewController(withIdentifier: "PatientViewController") as! PatientViewController
+       // navigationController?.pushViewController(nextViewController, animated: true)
+        APIManager.shared.getPost(collection: "patients", docName: "1"){ doc in
+            print(doc!)
+            
+        }
     }
 }
 
