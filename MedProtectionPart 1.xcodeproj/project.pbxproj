@@ -19,7 +19,7 @@
 		66AA1A4129998B3D00460B7F /* PatientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1A4029998B3D00460B7F /* PatientCell.swift */; };
 		66ECD4852997FE8D00C96C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD4842997FE8D00C96C57 /* AppDelegate.swift */; };
 		66ECD4872997FE8D00C96C57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD4862997FE8D00C96C57 /* SceneDelegate.swift */; };
-		66ECD4892997FE8D00C96C57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD4882997FE8D00C96C57 /* ViewController.swift */; };
+		66ECD4892997FE8D00C96C57 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD4882997FE8D00C96C57 /* AutorizationViewController.swift */; };
 		66ECD48C2997FE8D00C96C57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66ECD48A2997FE8D00C96C57 /* Main.storyboard */; };
 		66ECD48E2997FE8D00C96C57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66ECD48D2997FE8D00C96C57 /* Assets.xcassets */; };
 		66ECD4912997FE8D00C96C57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66ECD48F2997FE8D00C96C57 /* LaunchScreen.storyboard */; };
@@ -61,7 +61,7 @@
 		66ECD4812997FE8D00C96C57 /* MedProtectionPart 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MedProtectionPart 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66ECD4842997FE8D00C96C57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66ECD4862997FE8D00C96C57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		66ECD4882997FE8D00C96C57 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		66ECD4882997FE8D00C96C57 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
 		66ECD48B2997FE8D00C96C57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66ECD48D2997FE8D00C96C57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66ECD4902997FE8D00C96C57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -108,6 +108,7 @@
 				6655968029F01B8600AE6EC3 /* TableViewCustomsCells */,
 				66ECD48F2997FE8D00C96C57 /* LaunchScreen.storyboard */,
 				66ECD48A2997FE8D00C96C57 /* Main.storyboard */,
+				66ECD4882997FE8D00C96C57 /* AutorizationViewController.swift */,
 				66AA1A3E29997C2D00460B7F /* PatientViewController.swift */,
 				668BD96C299AB8B9005377CA /* AnalysisViewController.swift */,
 				665C79C029AD008C00498721 /* CryptoController.swift */,
@@ -176,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				6655968329F01BF000AE6EC3 /* System */,
-				66ECD4882997FE8D00C96C57 /* ViewController.swift */,
 				6655967F29F01B3500AE6EC3 /* Helps */,
 				6655968229F01BDD00AE6EC3 /* Utilites */,
 				6655967E29F01AEF00AE6EC3 /* Present */,
@@ -348,7 +348,7 @@
 				6621C2C929A26312001F6D15 /* UiImageView + Network.swift in Sources */,
 				6656A4A529F4122400026BCA /* PatientsModel.swift in Sources */,
 				668BD96D299AB8B9005377CA /* AnalysisViewController.swift in Sources */,
-				66ECD4892997FE8D00C96C57 /* ViewController.swift in Sources */,
+				66ECD4892997FE8D00C96C57 /* AutorizationViewController.swift in Sources */,
 				66AA1A3F29997C2D00460B7F /* PatientViewController.swift in Sources */,
 				66ECD4852997FE8D00C96C57 /* AppDelegate.swift in Sources */,
 				665C79C129AD008C00498721 /* CryptoController.swift in Sources */,

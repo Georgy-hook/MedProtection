@@ -9,42 +9,60 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Autorization View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MedProtectionPart_1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="AutorizationViewController" customModule="MedProtectionPart_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kyR-P2-knI">
-                                <rect key="frame" x="54" y="253" width="269" height="183"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WHe-vQ-mRU">
+                                <rect key="frame" x="30" y="283" width="333" height="143"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pp7-E9-MYv">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="34.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pasword" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X26-IZ-YKs">
+                                        <rect key="frame" x="0.0" y="54.333333333333314" width="333" height="34.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQZ-uX-9V4">
+                                        <rect key="frame" x="0.0" y="108.66666666666669" width="333" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Войти"/>
+                                        <connections>
+                                            <action selector="autorizationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AL6-fC-spL"/>
+                                            <action selector="autorizationButtonTapped:" destination="eCO-KB-cPg" eventType="touchUpInside" id="hKM-7I-WpQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catch2-c-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Fp-0P-4lf">
+                                <rect key="frame" x="4.6666666666666572" y="123" width="384" height="152"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UQ-8L-Ab6">
-                                <rect key="frame" x="182" y="472" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.92941176469999998" green="0.42352941179999998" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button">
-                                    <backgroundConfiguration key="background"/>
-                                    <color key="baseForegroundColor" red="0.46666666670000001" green="0.1764705882" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="getImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TwK-mY-TXg"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WHe-vQ-mRU" secondAttribute="trailing" constant="30" id="L3h-GR-7aB"/>
+                            <constraint firstItem="WHe-vQ-mRU" firstAttribute="top" secondItem="3Fp-0P-4lf" secondAttribute="bottom" constant="8" symbolic="YES" id="ThH-oh-31y"/>
+                            <constraint firstItem="WHe-vQ-mRU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="oE5-w5-FeW"/>
+                            <constraint firstItem="WHe-vQ-mRU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="q4M-52-aUO"/>
+                            <constraint firstItem="3Fp-0P-4lf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xj3-87-3ms"/>
+                            <constraint firstItem="WHe-vQ-mRU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="y5h-9E-G41"/>
+                            <constraint firstItem="3Fp-0P-4lf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="yJz-Lz-67D"/>
+                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="testImage" destination="kyR-P2-knI" id="bs5-DF-jV3"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="LLP-TD-ELf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="eCO-KB-cPg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1659" y="-85"/>
+            <point key="canvasLocation" x="-109" y="-2"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YLs-Cj-vag">
@@ -58,23 +76,23 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="9hR-2y-Cy0" kind="relationship" relationship="rootViewController" id="BOA-CY-NGR"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Y5R-0n-v52"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qJ9-Gk-zs6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7" y="-2"/>
+            <point key="canvasLocation" x="-943" y="-2"/>
         </scene>
         <!--Пациенты-->
         <scene sceneID="081-YR-LIJ">
             <objects>
-                <viewController id="9hR-2y-Cy0" customClass="PatientViewController" customModule="MedProtectionPart_1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="PatientViewController" storyboardIdentifier="PatientViewController" id="9hR-2y-Cy0" customClass="PatientViewController" customModule="MedProtectionPart_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LQm-EU-j5l">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="r2M-UO-KLg">
-                                <rect key="frame" x="0.0" y="159" width="393" height="659"/>
+                                <rect key="frame" x="0.0" y="115" width="393" height="703"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="B1f-Ul-Hdo" customClass="PatientCell" customModule="MedProtectionPart_1" customModuleProvider="target">
@@ -132,7 +150,7 @@
                                 </prototypes>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Поиск по пациентам" translatesAutoresizingMaskIntoConstraints="NO" id="0s1-sb-Yzh">
-                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="9hR-2y-Cy0" id="xhp-9k-di2"/>
@@ -218,14 +236,14 @@
                                 </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="nxh-wd-Gwi" customClass="AnalysCell" customModule="MedProtectionPart_1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="94" width="393" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="94" width="393" height="44.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nxh-wd-Gwi" id="lYf-7r-AEy">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gP-3D-vsZ">
-                                                    <rect key="frame" x="30" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="30" y="11.000000000000002" width="42" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -350,6 +368,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="catch2-c-logo.png" width="384" height="445"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
