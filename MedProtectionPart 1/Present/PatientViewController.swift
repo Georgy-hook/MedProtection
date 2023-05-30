@@ -8,14 +8,14 @@
 import UIKit
 import RealmSwift
 class PatientViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate{
-    let realm = try!Realm(configuration: .init(schemaVersion: 3))
+    let realm = try!Realm(configuration: .init(schemaVersion: 4))
     var patientRealm = try! Realm().objects(Patient.self)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return patientRealm.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PatientCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PatientCell
         
         cell.name.text = patientRealm[indexPath.row].firstName
         cell.surname.text = patientRealm[indexPath.row].lastName
@@ -42,7 +42,10 @@ class PatientViewController: UIViewController,UITableViewDataSource,UITableViewD
         super.viewDidLoad()
         PatientTable.dataSource = self
         PatientTable.delegate = self
-        Connect().getData(from: Connect().url!)
+        if patientRealm.isEmpty {
+            // Show error or go back to previous screen
+            print("Error of patientRealm")
+        }
         //PatientTable.keyboardDismissMode = .onDrag
     }
     //Функция поиска по ФИО
@@ -55,10 +58,10 @@ class PatientViewController: UIViewController,UITableViewDataSource,UITableViewD
         patientRealm = try! Realm().objects(Patient.self)
         PatientTable.reloadData()
     }
-
+    
     // Скрываем клавиатуру на searchBar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
     }
-
+    
 }
