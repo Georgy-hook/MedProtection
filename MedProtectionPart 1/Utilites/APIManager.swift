@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import FirebaseStorage
 import FirebaseDatabase
-
+import FirebaseAuth
 class APIManager {
     
     static let shared = APIManager()
@@ -21,7 +21,6 @@ class APIManager {
         db = Firestore.firestore()
         return db
     }
-    
     func getPost(collection: String, docName: String, completion: @escaping (patients?) -> Void) {
         let db = configureFB()
         db.collection(collection).document(docName).getDocument(completion: { (document, error) in
@@ -58,5 +57,45 @@ class APIManager {
             completion(doc)
         })
     }
+    
+}
 
+extension APIManager{
+    func signIn(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                completion(.failure(error))
+            } else if let user = authResult?.user {
+                completion(.success(user))
+            }
+        }
+    }
+    
+    func checkUserRole(completion: @escaping (String?) -> Void) {
+        if let currentUser = Auth.auth().currentUser {
+            let db = configureFB()
+            db.collection("Users").getDocuments { (snapshot, error) in
+                if let error = error {
+                    print("Error getting documents: \(error)")
+                    completion(nil)
+                } else {
+                    for document in snapshot!.documents {
+                        if document.documentID == "Admins" {
+                            let admins = document.data()
+                            if admins.contains(where: {$0.value as? String == currentUser.uid}) {
+                                completion("Admin")
+                                break
+                            }
+                        } else if document.documentID == "Users" {
+                            let users = document.data()
+                            if users.contains(where: {$0.value as? String == currentUser.uid}) {
+                                completion("User")
+                                break
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
