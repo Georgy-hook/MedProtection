@@ -25,6 +25,7 @@
 		66AA1A3B29994E2700460B7F /* JsonConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1A3A29994E2700460B7F /* JsonConnect.swift */; };
 		66AA1A3F29997C2D00460B7F /* PatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1A3E29997C2D00460B7F /* PatientViewController.swift */; };
 		66AA1A4129998B3D00460B7F /* PatientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1A4029998B3D00460B7F /* PatientCell.swift */; };
+		66B0C29B2A2642B9006D5F1E /* PatientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B0C29A2A2642B9006D5F1E /* PatientFactory.swift */; };
 		66ECD4852997FE8D00C96C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD4842997FE8D00C96C57 /* AppDelegate.swift */; };
 		66ECD4872997FE8D00C96C57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD4862997FE8D00C96C57 /* SceneDelegate.swift */; };
 		66ECD4892997FE8D00C96C57 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD4882997FE8D00C96C57 /* AutorizationViewController.swift */; };
@@ -36,7 +37,7 @@
 		66ECD4A82997FE8E00C96C57 /* MedProtectionPart_1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD4A72997FE8E00C96C57 /* MedProtectionPart_1UITestsLaunchTests.swift */; };
 		66ECD4B62997FEB300C96C57 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 66ECD4B52997FEB300C96C57 /* Realm */; };
 		66ECD4B82997FEB300C96C57 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 66ECD4B72997FEB300C96C57 /* RealmSwift */; };
-		66ECD4BA2997FEC800C96C57 /* RealmInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD4B92997FEC800C96C57 /* RealmInit.swift */; };
+		66ECD4BA2997FEC800C96C57 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD4B92997FEC800C96C57 /* RealmService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		66AA1A3A29994E2700460B7F /* JsonConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonConnect.swift; sourceTree = "<group>"; };
 		66AA1A3E29997C2D00460B7F /* PatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientViewController.swift; sourceTree = "<group>"; };
 		66AA1A4029998B3D00460B7F /* PatientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientCell.swift; sourceTree = "<group>"; };
+		66B0C29A2A2642B9006D5F1E /* PatientFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientFactory.swift; sourceTree = "<group>"; };
 		66ECD4812997FE8D00C96C57 /* MedProtectionPart 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MedProtectionPart 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66ECD4842997FE8D00C96C57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66ECD4862997FE8D00C96C57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +83,7 @@
 		66ECD4A12997FE8E00C96C57 /* MedProtectionPart 1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MedProtectionPart 1UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66ECD4A52997FE8E00C96C57 /* MedProtectionPart_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedProtectionPart_1UITests.swift; sourceTree = "<group>"; };
 		66ECD4A72997FE8E00C96C57 /* MedProtectionPart_1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedProtectionPart_1UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		66ECD4B92997FEC800C96C57 /* RealmInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInit.swift; sourceTree = "<group>"; };
+		66ECD4B92997FEC800C96C57 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +154,8 @@
 		6655968229F01BDD00AE6EC3 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
-				66ECD4B92997FEC800C96C57 /* RealmInit.swift */,
+				66ECD4B92997FEC800C96C57 /* RealmService.swift */,
+				66B0C29A2A2642B9006D5F1E /* PatientFactory.swift */,
 				66AA1A3A29994E2700460B7F /* JsonConnect.swift */,
 				6697B0902A1E596C00670A75 /* APIManager.swift */,
 				6656A4A429F4122400026BCA /* PatientsModel.swift */,
@@ -377,11 +380,12 @@
 				66ECD4892997FE8D00C96C57 /* AutorizationViewController.swift in Sources */,
 				6697B0912A1E596C00670A75 /* APIManager.swift in Sources */,
 				66AA1A3F29997C2D00460B7F /* PatientViewController.swift in Sources */,
+				66B0C29B2A2642B9006D5F1E /* PatientFactory.swift in Sources */,
 				66ECD4852997FE8D00C96C57 /* AppDelegate.swift in Sources */,
 				665C79C129AD008C00498721 /* CryptoController.swift in Sources */,
 				66ECD4872997FE8D00C96C57 /* SceneDelegate.swift in Sources */,
 				6621C2C729A253AD001F6D15 /* AnalysCell.swift in Sources */,
-				66ECD4BA2997FEC800C96C57 /* RealmInit.swift in Sources */,
+				66ECD4BA2997FEC800C96C57 /* RealmService.swift in Sources */,
 				6656A4A729F43E2800026BCA /* CurrentPatientModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

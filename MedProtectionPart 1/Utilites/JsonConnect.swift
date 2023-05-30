@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 import UIKit
 class Connect{
-    let realm = try!Realm(configuration: .init(schemaVersion: 3))
+    let realm = try!Realm(configuration: .init(schemaVersion: 4))
     let url = URL(string: "http://med-expep.ru/MedProtectAdmin/BaseJson3.json")
     func getData(from url:URL){
         
