@@ -43,8 +43,7 @@ class PatientViewController: UIViewController,UITableViewDataSource,UITableViewD
         PatientTable.dataSource = self
         PatientTable.delegate = self
         if patientRealm.isEmpty {
-            // Show error or go back to previous screen
-            print("Error of patientRealm")
+            ErrorAlertService.showAlert(on: self, with: .noPatientData)
         }
         //PatientTable.keyboardDismissMode = .onDrag
     }

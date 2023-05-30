@@ -45,7 +45,7 @@ class AnalysisViewController: UIViewController,UITableViewDataSource, UITableVie
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
+        //let cell = tableView.cellForRow(at: indexPath)
         let nextViewController = storyboard!.instantiateViewController(withIdentifier: "CryptoController") as! CryptoController
         nextViewController.urlString = analysRealm![indexPath.row].urlImage
         navigationController?.pushViewController(nextViewController, animated: true)

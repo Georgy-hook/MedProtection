@@ -12,8 +12,8 @@ class AutorizationViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBAction func autorizationButtonTapped(_ sender: Any) {
-        let email = "georgin2000155@gmail.com"
-        let password = "Test12345"
+        let email = loginTextField.text!
+        let password = passwordTextField.text!
         APIManager.shared.signIn(email: email, password: password) { (result) in
             switch result {
             case .success(let user):
@@ -28,7 +28,7 @@ class AutorizationViewController: UIViewController {
                 }
             case .failure(let error):
                 print("Error signing in: \(error)")
-                // Обрабатывайте ошибку здесь (например, показывайте сообщение об ошибке)
+                ErrorAlertService.showAlert(on: self, with: .userNotFound)
             }
         }
     }
