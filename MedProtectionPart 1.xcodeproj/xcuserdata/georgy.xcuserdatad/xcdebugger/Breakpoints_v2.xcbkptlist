@@ -71,49 +71,110 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D350E0EF-EC0A-4DC5-907F-8C122E16F804"
+            uuid = "89D181B0-8333-483C-8960-A93729B039A0"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MedProtectionPart 1/Present/CryptoController.swift"
+            filePath = "MedProtectionPart 1/Present/AutorizationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "CryptThis(_:)"
-            landmarkType = "7">
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "AutorizationViewController"
+            landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "D350E0EF-EC0A-4DC5-907F-8C122E16F804 - 6a9d94c6e6e26a58"
+                  uuid = "89D181B0-8333-483C-8960-A93729B039A0 - 722a996e970c47f1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MedProtectionPart_1.CryptoController.CryptThis(Any) -&gt; ()"
+                  symbolName = "MedProtectionPart_1.AutorizationViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; MedProtectionPart_1.AutorizationViewController"
                   moduleName = "MedProtectionPart 1"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/georgy/Documents/%D0%9D%D0%98%D0%A0/Programs/MedProtectionPart%201/MedProtectionPart%201/Present/CryptoController.swift"
+                  urlString = "file:///Users/georgy/Documents/%D0%9D%D0%98%D0%A0/Programs/MedProtectionPart%201/MedProtectionPart%201/Present/AutorizationViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "376">
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
-                  uuid = "D350E0EF-EC0A-4DC5-907F-8C122E16F804 - cbe724f8fc090090"
+                  uuid = "89D181B0-8333-483C-8960-A93729B039A0 - c2eff4d9fc9e7c0e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;ImageCrypto.ImageCryptor.CryptedImage, Swift.Error&gt;) -&gt; () in MedProtectionPart_1.CryptoController.CryptThis(Any) -&gt; ()"
+                  symbolName = "MedProtectionPart_1.AutorizationViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; MedProtectionPart_1.AutorizationViewController"
                   moduleName = "MedProtectionPart 1"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/georgy/Documents/%D0%9D%D0%98%D0%A0/Programs/MedProtectionPart%201/MedProtectionPart%201/Present/CryptoController.swift"
+                  urlString = "file:///Users/georgy/Documents/%D0%9D%D0%98%D0%A0/Programs/MedProtectionPart%201/MedProtectionPart%201/Present/AutorizationViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "80">
+                  startingLineNumber = "10"
+                  endingLineNumber = "10"
+                  offsetFromSymbolStart = "264">
+               </Location>
+               <Location
+                  uuid = "89D181B0-8333-483C-8960-A93729B039A0 - 24839c4702ea6477"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MedProtectionPart_1.AutorizationViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;MedProtectionPart_1.AutorizationViewController&gt;"
+                  moduleName = "MedProtectionPart 1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/georgy/Documents/%D0%9D%D0%98%D0%A0/Programs/MedProtectionPart%201/MedProtectionPart%201/Present/AutorizationViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "89D181B0-8333-483C-8960-A93729B039A0 - 268d30dfb7180a54"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MedProtectionPart_1.AutorizationViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;MedProtectionPart_1.AutorizationViewController&gt;"
+                  moduleName = "MedProtectionPart 1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/georgy/Documents/%D0%9D%D0%98%D0%A0/Programs/MedProtectionPart%201/MedProtectionPart%201/Present/AutorizationViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "10"
+                  endingLineNumber = "10"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "89D181B0-8333-483C-8960-A93729B039A0 - 9a383b6ea860e22b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MedProtectionPart_1.AutorizationViewController.__deallocating_deinit"
+                  moduleName = "MedProtectionPart 1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/georgy/Documents/%D0%9D%D0%98%D0%A0/Programs/MedProtectionPart%201/MedProtectionPart%201/Present/AutorizationViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1EA8C46A-0F40-4916-8A2D-C2B760BD947F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MedProtectionPart 1/Present/AutorizationViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "AutorizationViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
