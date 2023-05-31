@@ -26,7 +26,7 @@ class RealmService {
     
     static let shared = RealmService()
     
-    private var realm: Realm!
+    var realm: Realm!
     
     private init() {
         do {

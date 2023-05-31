@@ -96,7 +96,7 @@ extension APIManager{
         case "Admin":
             getAllDocuments(collection: "patients", completion: completion)
         case "User":
-            getDocument(collection: "patients", docName: "document1", completion: completion)
+            getDocument(collection: "patients", docName: "1", completion: completion)
         default:
             ErrorAlertService.showAlert(on: AutorizationViewController(), with: .unknownRole)
         }

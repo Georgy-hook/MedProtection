@@ -21,8 +21,13 @@ class AutorizationViewController: UIViewController {
                 APIManager.shared.checkUserRole { role in
                     APIManager.shared.loadData(for: role!){
                         // Переход к следующему контроллеру после загрузки данных
-                        let nextViewController = self.storyboard!.instantiateViewController(withIdentifier: "PatientViewController") as! PatientViewController
-                        self.navigationController?.pushViewController(nextViewController, animated: true)
+                        if role == "Admin"{
+                            let nextViewController = self.storyboard!.instantiateViewController(withIdentifier: "PatientViewController") as! PatientViewController
+                            self.navigationController?.pushViewController(nextViewController, animated: true)
+                        } else{
+                            let nextViewController = self.storyboard!.instantiateViewController(withIdentifier: "PatientViewController") as! PatientViewController
+                            self.navigationController?.pushViewController(nextViewController, animated: true)
+                        }
                     }
                     
                 }
