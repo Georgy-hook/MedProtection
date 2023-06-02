@@ -26,7 +26,7 @@ class RealmService {
     
     static let shared = RealmService()
     
-    private var realm: Realm!
+    var realm: Realm!
     
     private init() {
         do {
@@ -36,7 +36,10 @@ class RealmService {
             print("Failed to initialise Realm: \(error.localizedDescription)")
         }
     }
-
+    
+    func fetchPatients() -> Results<Patient> {
+        return realm.objects(Patient.self)
+    }
     
     func savePatient(_ patient: Patient) {
         do {
@@ -48,6 +51,14 @@ class RealmService {
         }
     }
     
+    func getPatient(at index: Int) -> Patient? {
+        let patients = fetchPatients()
+        guard patients.indices.contains(index) else {
+            return nil
+        }
+        return patients[index]
+    }
+
     func clearDatabase() {
         do {
             let realm = try Realm()
@@ -58,5 +69,8 @@ class RealmService {
             print("Error clearing database: \(error)")
         }
     }
-
+    
+    func filterPatients(with searchText: String) -> Results<Patient> {
+        return fetchPatients().filter("firstName CONTAINS[c] '\(searchText)' OR lastName CONTAINS[c] '\(searchText)' OR patronymic CONTAINS[c] '\(searchText)'")
+    }
 }

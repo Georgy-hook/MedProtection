@@ -10,17 +10,22 @@ import ImageCrypto
 import CommonCrypto
 import Foundation
 import Security
-class CryptoController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CryptoController: UIViewController {
     
+    //MARK: - Outlets
     @IBOutlet weak var nonCyptoImage: UIImageView!
-    
     @IBOutlet weak var cryptoImage: UIImageView!
+    
+    //MARK: - Variables
     var urlString:String = ""
+    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         nonCyptoImage.downloaded(from: URL(string: urlString)!)
     }
     
+    //MARK: - Actions
     @IBAction func CryptThis(_ sender: Any) {
         guard let image = nonCyptoImage.image else{
             return
@@ -44,15 +49,10 @@ class CryptoController: UIViewController, UIImagePickerControllerDelegate, UINav
             
         }
     }
-    // MARK: - Загрузка изображения в ImageView
-    
-    @IBAction func downloadImage(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        cryptoImage.image = UIImage(named: "test1")
-        present(imagePicker, animated: true, completion: nil)
-    }
+}
+
+// MARK: - ImagePicker Delegate
+extension CryptoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             nonCyptoImage.image = image
@@ -64,4 +64,13 @@ class CryptoController: UIViewController, UIImagePickerControllerDelegate, UINav
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Загрузка изображения в ImageView
+    
+    @IBAction func downloadImage(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        cryptoImage.image = UIImage(named: "test1")
+        present(imagePicker, animated: true, completion: nil)
+    }
 }

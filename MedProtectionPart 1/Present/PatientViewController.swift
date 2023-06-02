@@ -7,9 +7,30 @@
 
 import UIKit
 import RealmSwift
-class PatientViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate{
-    let realm = try!Realm(configuration: .init(schemaVersion: 4))
-    var patientRealm = try! Realm().objects(Patient.self)
+
+class PatientViewController: UIViewController{
+    //MARK: - Outlets
+    @IBOutlet weak var PatientTable: UITableView!
+    
+    //MARK: - Variables
+    let realmService = RealmService.shared
+    var patientRealm: Results<Patient>!
+    
+    //MARK: - LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        patientRealm = realmService.fetchPatients()
+        PatientTable.dataSource = self
+        PatientTable.delegate = self
+        
+        if patientRealm.isEmpty {
+            ErrorAlertService.showAlert(on: self, with: .noPatientData)
+        }
+    }
+}
+
+//MARK: - TableView DataSource
+extension PatientViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return patientRealm.count
     }
@@ -23,45 +44,49 @@ class PatientViewController: UIViewController,UITableViewDataSource,UITableViewD
         return cell
         
     }
+}
+
+//MARK: - TableView Delegate
+extension PatientViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {//Открытие следующего View и заполнение карточки в зависимости от выбранного пациента
-        let cell = tableView.cellForRow(at: indexPath) as! PatientCell
-        let nextViewController = storyboard!.instantiateViewController(withIdentifier: "AnalysisViewController") as! AnalysisViewController
-        nextViewController.person = .init(name: cell.name.text!,
-                                          surname: cell.surname.text!,
-                                          patronymic: cell.patronymic.text!,
-                                          age: patientRealm[indexPath.row].age,
-                                          urlImage: patientRealm[indexPath.row].personImage)
-        navigationController?.pushViewController(nextViewController, animated: true)
-        nextViewController.analysRealm = patientRealm[indexPath.row].analysis
+        let patient = patientRealm[indexPath.row]
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+           // Создаем новый view controller, передавая ему пациента.
+        guard let nextViewController = storyboard?.instantiateViewController(identifier: "AnalysisViewController", creator: { coder in
+               AnalysisViewController(coder: coder, patient: patient)
+           }) else {
+               return
+           }
+
+           navigationController?.pushViewController(nextViewController, animated: true)
         
         
     }
-    @IBOutlet weak var PatientTable: UITableView!
+}
+
+//MARK: - SearchBar Delegate
+extension PatientViewController:UISearchBarDelegate{
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        PatientTable.dataSource = self
-        PatientTable.delegate = self
-        if patientRealm.isEmpty {
-            // Show error or go back to previous screen
-            print("Error of patientRealm")
-        }
-        //PatientTable.keyboardDismissMode = .onDrag
-    }
     //Функция поиска по ФИО
+    func updatePatientsList(searchText: String) {
+        if searchText.isEmpty {
+                   patientRealm = realmService.fetchPatients()
+               } else {
+                   patientRealm = realmService.filterPatients(with: searchText)
+               }
+               PatientTable.reloadData()
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard searchText == "" else{
-            patientRealm = try! Realm().objects(Patient.self).filter("firstName CONTAINS[c] '\(searchText)'||lastName CONTAINS[c] '\(searchText)'||patronymic CONTAINS[c] '\(searchText)'")
-            PatientTable.reloadData()
-            return
+        DispatchQueue.main.async {
+            self.updatePatientsList(searchText: searchText)
         }
-        patientRealm = try! Realm().objects(Patient.self)
-        PatientTable.reloadData()
     }
     
     // Скрываем клавиатуру на searchBar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
     }
-    
 }

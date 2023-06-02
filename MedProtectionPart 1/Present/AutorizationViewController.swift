@@ -8,12 +8,16 @@
 import UIKit
 
 class AutorizationViewController: UIViewController {
+    
+    //MARK: - Outlets
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBAction func autorizationButtonTapped(_ sender: Any) {
-        let email = "georgin2000155@gmail.com"
-        let password = "Test12345"
+    //MARK: - Actions
+    @IBAction func autorizationButtonTapped(_ sender: UIButton) {
+        sender.isEnabled = false  // Отключить кнопку
+        let email = loginTextField.text!
+        let password = passwordTextField.text!
         APIManager.shared.signIn(email: email, password: password) { (result) in
             switch result {
             case .success(let user):
@@ -21,14 +25,36 @@ class AutorizationViewController: UIViewController {
                 APIManager.shared.checkUserRole { role in
                     APIManager.shared.loadData(for: role!){
                         // Переход к следующему контроллеру после загрузки данных
-                        let nextViewController = self.storyboard!.instantiateViewController(withIdentifier: "PatientViewController") as! PatientViewController
-                        self.navigationController?.pushViewController(nextViewController, animated: true)
+                        if role == "Admin"{
+                            let nextViewController = self.storyboard!.instantiateViewController(withIdentifier: "PatientViewController") as! PatientViewController
+                            self.navigationController?.pushViewController(nextViewController, animated: true)
+                            sender.isEnabled.toggle()
+                        } else{
+                            guard let patient = RealmService.shared.getPatient(at: 0) else{
+                                ErrorAlertService.showAlert(on: self, with: .databaseError)
+                                sender.isEnabled.toggle()
+                                return
+                            }
+                            
+                            // Создаем новый view controller, передавая ему пациента.
+                            guard let nextViewController = self.storyboard?.instantiateViewController(identifier: "AnalysisViewController", creator: { coder in
+                                AnalysisViewController(coder: coder, patient: patient)
+                            }) else {
+                                ErrorAlertService.showAlert(on: self, with: .databaseError)
+                                sender.isEnabled.toggle()
+                                return
+                            }
+                            
+                            self.navigationController?.pushViewController(nextViewController, animated: true)
+                            sender.isEnabled.toggle()
+                        }
                     }
                     
                 }
             case .failure(let error):
                 print("Error signing in: \(error)")
-                // Обрабатывайте ошибку здесь (например, показывайте сообщение об ошибке)
+                ErrorAlertService.showAlert(on: self, with: .userNotFound)
+                sender.isEnabled.toggle()
             }
         }
     }

@@ -20,16 +20,4 @@ struct CurrentPatient {// Структура с данными карточки 
         self.age = age
         self.urlImage = urlImage
     }
-    // Функция для заполнения Label которые являются представлением карточки пациента
-    func fillPatientInformationWith(Labelname fName: inout UILabel,
-             labelSurname fSurname: inout UILabel,
-             labelPatronomyc fPatronymic: inout UILabel,
-             labelAge fAge: inout UILabel,
-             imagePatient:inout UIImageView){
-        fName.text = "Имя: \(name)"
-        fSurname.text = "Фамилия: \(surname)"
-        fPatronymic.text = "Отчество: \(patronymic)"
-        fAge.text = "Возраст: \(age)"
-        imagePatient.downloaded(from: URL(string: urlImage)!)
-    }
 }

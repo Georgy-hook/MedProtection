@@ -49,6 +49,7 @@ class APIManager {
         let db = configureFB()
         db.collection(collection).getDocuments { (querySnapshot, error) in
             if let error = error {
+                ErrorAlertService.showAlert(on: AutorizationViewController(), with: .networkError)
                 print("Error getting documents: \(error)")
                 return
             } else {
@@ -95,9 +96,9 @@ extension APIManager{
         case "Admin":
             getAllDocuments(collection: "patients", completion: completion)
         case "User":
-            getDocument(collection: "patients", docName: "document1", completion: completion)
+            getDocument(collection: "patients", docName: "1", completion: completion)
         default:
-            print("Unknown role: \(role)")
+            ErrorAlertService.showAlert(on: AutorizationViewController(), with: .unknownRole)
         }
     }
 }
@@ -118,7 +119,7 @@ extension APIManager{
             let db = configureFB()
             db.collection("Users").getDocuments { (snapshot, error) in
                 if let error = error {
-                    print("Error getting documents: \(error)")
+                    ErrorAlertService.showAlert(on: AutorizationViewController(), with: .networkError)
                     completion(nil)
                 } else {
                     for document in snapshot!.documents {
