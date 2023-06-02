@@ -13,13 +13,13 @@ class PatientViewController: UIViewController{
     @IBOutlet weak var PatientTable: UITableView!
     
     //MARK: - Variables
-    let realm = RealmService.shared.realm
-    var patientRealm = try! Realm().objects(Patient.self)
+    let realmService = RealmService.shared
+    var patientRealm: Results<Patient>!
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        patientRealm = realmService.fetchPatients()
         PatientTable.dataSource = self
         PatientTable.delegate = self
         
@@ -49,15 +49,18 @@ extension PatientViewController:UITableViewDataSource{
 //MARK: - TableView Delegate
 extension PatientViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {//Открытие следующего View и заполнение карточки в зависимости от выбранного пациента
-        let cell = tableView.cellForRow(at: indexPath) as! PatientCell
-        let nextViewController = storyboard!.instantiateViewController(withIdentifier: "AnalysisViewController") as! AnalysisViewController
-        nextViewController.person = .init(name: cell.name.text!,
-                                          surname: cell.surname.text!,
-                                          patronymic: cell.patronymic.text!,
-                                          age: patientRealm[indexPath.row].age,
-                                          urlImage: patientRealm[indexPath.row].personImage)
-        navigationController?.pushViewController(nextViewController, animated: true)
-        nextViewController.analysRealm = patientRealm[indexPath.row].analysis
+        let patient = patientRealm[indexPath.row]
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+           // Создаем новый view controller, передавая ему пациента.
+        guard let nextViewController = storyboard?.instantiateViewController(identifier: "AnalysisViewController", creator: { coder in
+               AnalysisViewController(coder: coder, patient: patient)
+           }) else {
+               return
+           }
+
+           navigationController?.pushViewController(nextViewController, animated: true)
         
         
     }
@@ -68,13 +71,12 @@ extension PatientViewController:UISearchBarDelegate{
     
     //Функция поиска по ФИО
     func updatePatientsList(searchText: String) {
-        guard searchText == "" else{
-            patientRealm = try! Realm().objects(Patient.self).filter("firstName CONTAINS[c] '\(searchText)'||lastName CONTAINS[c] '\(searchText)'||patronymic CONTAINS[c] '\(searchText)'")
-            PatientTable.reloadData()
-            return
-        }
-        patientRealm = try! Realm().objects(Patient.self)
-        PatientTable.reloadData()
+        if searchText.isEmpty {
+                   patientRealm = realmService.fetchPatients()
+               } else {
+                   patientRealm = realmService.filterPatients(with: searchText)
+               }
+               PatientTable.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

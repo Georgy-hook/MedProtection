@@ -16,49 +16,56 @@ class AnalysisViewController: UIViewController{
     @IBOutlet weak var imageCurrentPatient: UIImageView!
     @IBOutlet weak var analysTableView: UITableView!
     
-    // Первоначальная инициализация структуры
-    var person:CurrentPatient = CurrentPatient(name: "", surname: "", patronymic: "", age: 1, urlImage: "")
-    
     let realm = RealmService.shared.realm
-    var analysRealm:List<Analys>?
-    
-    func fillPatientInformationWith(patient: CurrentPatient){
-         nameCurrentPatient.text = "Имя: \(patient.name)"
-         surnameCurrentPatient.text = "Фамилия: \(patient.surname)"
-         patronymicCurrentPatient.text = "Отчество: \(patient.patronymic)"
-         ageCurrentPatient.text = "Возраст: \(patient.age)"
-        if let url = URL(string: patient.urlImage) {
-               imageCurrentPatient.downloaded(from: url)
-           } else {
-               ErrorAlertService.showAlert(on: self, with: .networkError)
-           }
-     }
-    
+    var patient: Patient
+
+    init?(coder: NSCoder, patient: Patient) {
+        self.patient = patient
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("You must create this view controller with a patient.")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         analysTableView.dataSource = self
         analysTableView.delegate = self
-        fillPatientInformationWith(patient: person)
+        fillPatientInformation()
+    }
+
+    func fillPatientInformation() {
+        nameCurrentPatient.text = "Имя: \(patient.firstName)"
+        surnameCurrentPatient.text = "Фамилия: \(patient.lastName)"
+        patronymicCurrentPatient.text = "Отчество: \(patient.patronymic)"
+        ageCurrentPatient.text = "Возраст: \(patient.age)"
+        if let url = URL(string: patient.personImage) {
+            imageCurrentPatient.downloaded(from: url)
+        } else {
+            ErrorAlertService.showAlert(on: self, with: .networkError)
+        }
     }
 }
 
 //MARK: - TableView DataSource
 extension AnalysisViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return analysRealm?.count ?? 0
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AnalysCell
-        cell.analysName.text = analysRealm![indexPath.row].name
-        return cell
-    }
+          return patient.analysis.count
+      }
+
+      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AnalysCell
+          cell.analysName.text = patient.analysis[indexPath.row].name
+          return cell
+      }
 }
 
 //MARK: - TableView Delegate
 extension AnalysisViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextViewController = storyboard!.instantiateViewController(withIdentifier: "CryptoController") as! CryptoController
-        nextViewController.urlString = analysRealm![indexPath.row].urlImage
+        nextViewController.urlString = patient.analysis[indexPath.row].urlImage
         navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
